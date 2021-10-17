@@ -34,10 +34,12 @@ Rundgänge sind nicht gleich Strecken! Rundgänge werden als Polygon gespeichert
 ### POIs, Strecken und Rundgänge hinzufügen
 POIs, Strecken und Rundgänge können gespeichert, geändert oder gelöscht werden. 
 
-**POIs verwalten:**
+**POIs hinzufügen:**
+
 <img width="238" alt="Bildschirmfoto 2021-10-17 um 19 54 17" src="https://user-images.githubusercontent.com/22305662/137639130-97aa39c2-9675-4820-a987-bed5c8add181.png">
 
-**Rundgänge/Strecken verwalten:**
+**Rundgänge/Strecken hinzufügen:**
+
 <img width="464" alt="Bildschirmfoto 2021-10-17 um 19 54 35" src="https://user-images.githubusercontent.com/22305662/137639508-fa768165-69e8-4309-9a94-40655743261a.png">
 
 ## Datenbankaufbau
