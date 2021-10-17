@@ -1,0 +1,214 @@
+CREATE TABLE custom_route(
+	id SERIAL NOT NULL, 
+	route_name VARCHAR(100),
+	added TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+	poly_geom GEOMETRY(POLYGON, 4326) DEFAULT NULL,
+	line_geom GEOMETRY(LINESTRING, 4326) DEFAULT NULL,
+	
+	PRIMARY KEY(id)
+);
+
+CREATE TABLE custom_poi(
+	id SERIAL NOT NULL, 
+	poi_name VARCHAR(100),
+	added TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+	punkt_geom GEOMETRY(POINT, 4326) DEFAULT NULL,
+	
+	PRIMARY KEY(id)
+);
+
+
+CREATE TABLE rundgang(
+	id SERIAL NOT NULL, 
+	rundgang_name VARCHAR(100),
+	stadtteil VARCHAR(100),
+	added TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+	added_by VARCHAR(100),
+	poly_geom GEOMETRY(POLYGON, 4326) DEFAULT NULL,
+	line_geom GEOMETRY(LINESTRING, 4326) DEFAULT NULL,
+	
+	PRIMARY KEY(id)
+);
+
+CREATE TABLE strecken(
+	id SERIAL NOT NULL, 
+	rundgang_name VARCHAR(100),
+	stadtteil VARCHAR(100),
+	added TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	add_by VARCHAR(100),
+	line_geom GEOMETRY(LINESTRING, 4326) DEFAULT NULL,
+	
+	PRIMARY KEY(id)
+);
+
+CREATE TABLE pois(
+	id SERIAL NOT NULL, 
+	poi_name VARCHAR(100),
+	plakat_nr INT,
+	stadtteil VARCHAR(100),
+	rundgang_name VARCHAR(100),
+	
+	added TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+	punkt_geom GEOMETRY(POINT, 4326) DEFAULT NULL,
+
+	PRIMARY KEY(id)
+);
+
+
+INSERT INTO pois (poi_name, plakat_nr, stadtteil, rundgang_name, punkt_geom)
+VALUES
+(
+	'Das Haus des Stormarner Landrats', 
+	17, 
+	'Wandsbek', 
+	'Wandsbeker Rundgang', 
+	ST_GeomFromText('POINT(10.069025 53.571207)', 4326)
+);
+
+INSERT INTO pois (poi_name, plakat_nr, stadtteil, rundgang_name, punkt_geom)
+VALUES
+(
+	'Heinrich Rantzau & Tycho Brahe', 
+	1, 
+	'Wandsbek', 
+	'Wandsbeker Rundgang', 
+	ST_GeomFromText('POINT(10.0703162 53.5725431)', 4326)
+),
+(
+	'Puvogelbrunnen', 
+	2, 
+	'Wandsbek', 
+	'Wandsbeker Rundgang', 
+	ST_GeomFromText('POINT(10.070398 53.5722393)', 4326)
+),
+(
+	'Wandsbeker Bank', 
+	4, 
+	'Wandsbek', 
+	'Wandsbeker Rundgang', 
+	ST_GeomFromText('POINT(10.0678203 53.5724681)', 4326)
+),
+(
+	'Wohnhaus von Johann Heinrich Voß', 
+	6, 
+	'Wandsbek', 
+	'Wandsbeker Rundgang', 
+	ST_GeomFromText('POINT(10.067936 53.573784)', 4326)
+),
+(
+	'Die Löwen-Plastiken', 
+	14, 
+	'Wandsbek', 
+	'Wandsbeker Rundgang', 
+	ST_GeomFromText('POINT(10.0661621 53.5715152)', 4326)
+)
+,
+(
+	'Die Matthias-Claudius-Skulptur', 
+	15, 
+	'Wandsbek', 
+	'Wandsbeker Rundgang', 
+	ST_GeomFromText('POINT(10.0666858 53.57186)', 4326)
+),
+(
+	'Das Wandsbeker Schloß', 
+	18, 
+	'Wandsbek', 
+	'Wandsbeker Rundgang', 
+	ST_GeomFromText('POINT(10.069721 53.570419)', 4326)
+),
+(
+	'Wandsbeker Hof', 
+	19, 
+	'Wandsbek', 
+	'Wandsbeker Rundgang', 
+	ST_GeomFromText('POINT(10.0693565 53.5716171)', 4326)
+),
+(
+	'Das Wandsbeker Gehölz', 
+	23, 
+	'Wandsbek', 
+	'Wandsbeker Rundgang', 
+	ST_GeomFromText('POINT(10.075988 53.570935)', 4326)
+),
+(
+	'Geschichtsstein', 
+	35, 
+	'Wandsbek', 
+	'Wandsbeker Rundgang', 
+	ST_GeomFromText('POINT(10.0725025 53.571650)', 4326)
+);
+
+
+INSERT INTO pois(poi_name, plakat_nr, stadtteil, rundgang_name, punkt_geom) VALUES
+(
+	'Jüdischer Friedhof Wandsbek',
+	Null,
+	'Wandsbek',
+	'Historische Parks und Friedhöfe',
+	ST_GeomFromText('POINT(10.0699524 53.574184)',4326)
+),
+(
+	'Die Rantzau-Mühle',
+	Null,
+	'Wandsbek',
+	'Historische Orte',
+	ST_GeomFromText('POINT(10.0579746 53.5740531)',4326)
+),
+(
+	'Botanischer Sondergarten',
+	Null,
+	'Wandsbek',
+	'Historische Parks und Friedhöfe',
+	ST_GeomFromText('POINT(10.0965625 53.5811427)',4326)
+),
+(
+	'Grenzstein und Steinbänke',
+	0,
+	'Wandsbek',
+	'Historische Orte',
+	ST_GeomFromText('POINT(10.066212 53.564045)',4326)
+),
+(
+	'Die Wandsbeker Feuerwache',
+	8,
+	'Wandsbek',
+	'Wandsbeker Rundgang',
+	ST_GeomFromText('POINT(10.069162 53.574935)',4326)
+),
+(
+	'Staatsarchiv',
+	9,
+	'Wandsbek',
+	'Wandsbeker Rundgang',
+	ST_GeomFromText('POINT(10.0694611 53.5743527)',4326)
+),
+(
+	'Wandse',
+	10,
+	'Wandsbek',
+	'Wandsbeker Rundgang',
+	ST_GeomFromText('POINT(10.067840 53.576204)',4326)
+),
+(
+	'Adler Apotheke',
+	Null,
+	'Wandsbek',
+	'Denkmalschutz',
+	ST_GeomFromText('POINT(10.0657173 53.5716624)',4326)
+),
+(
+	'Karstadt - Wandsbeks ältestes Warenhaus',
+	13,
+	'Wandsbek',
+	'Wandsbeker Rundgang',
+	ST_GeomFromText('POINT(10.065739 53.571784)',4326)
+),
+(
+	'Ehem. Stationsgebäude',
+	24,
+	'Wandsbek',
+	'Wandsbeker Rundgang',
+	ST_GeomFromText('POINT(10.077427 53.570249)',4326)
+);
+

@@ -1,0 +1,39 @@
+--- Tabellen, DB: Kayla | Port:5432, User: postgres, PW: cute ---
+
+** custom_poi **
+id
+poi_name
+added
+punkt_geom
+added_by
+stadtteil
+station_nr
+
+** custom_route **
+id
+route_name
+added
+poly_geom
+line_geom
+added_by
+
+** pois **
+id
+poi_name
+plakat_nr
+stadtteil
+rundgang_name
+added
+punkt_geom
+
+** rundgang **
+id
+rundgang_name
+stadtteil 
+added
+poly_geom
+line_geom
+
+** test **
+id
+test_var (CHAR)

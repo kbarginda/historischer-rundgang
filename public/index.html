@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <title>Hamburger Historischer Rundgang</title>
+
+
+    <link rel="icon" href="images/1F9ED_color.png" type="image/x-icon">
+  
+  
+    <script src="https://kit.fontawesome.com/010666ae98.js" crossorigin="anonymous"></script>
+
+		<!--<link rel="stylesheet" href="/lib/ol.css">-->
+		<link rel="stylesheet" href="/lib/popup.css">
+		<link rel="stylesheet" href="/lib/ol.css">
+
+		<link rel="stylesheet" href="/index.css">
+
+	</head>
+	<body>
+
+		<aside>
+			<div id="mySideBar" class="sidebar">
+				<a href="javascript:void(0)" onclick="infoCloseAll()" title="Sidebar schließen"><i class="fas fa-times"></i></a>
+			  <br>
+				<a href="javascript:void(0)" onclick="getinfo('About')" title="About"<i class="fas fa-info-circle"></i></a>
+				<a href="javascript:void(0)" onclick="getinfo('about')" title="Mehr Infos" <i class="fas fa-atlas"></i></a>
+				<a href="javascript:void(0)" onclick="getinfo('routen')" title="POI-Manager" <i class="fas fa-map-marker-alt"></i></a>
+				<a href="javascript:void(0)" onclick="getinfo('routen2')" title="Routenmanager" <i class="fas fa-route"></i></a>
+				<a href="javascript:void(0)" onclick="getinfo('routen3')" title="Streckenmanager" <i class="fas fa-road"></i></a>
+
+				<a href="javascript:void(0)" onclick="getinfo('layers')" title="Layers"><i class="fas fa-map"></i></a>
+				<br>
+				<a href="javascript:void(0)" onclick="getinfo('bug')" title="Fehler aufgetreten?"<i class="fas fa-bug"></i></a>
+			  </div> 
+
+
+			<!-- LAYER SWITCHER -->	
+			
+			<div id="layers" class="subsidebar">
+			<h1>Kartenlayout Ändern</h1>
+			<b1>
+			<div>
+				<input type="radio" name="baseLayerRadioButton" value="OSM" checked><label for="OSM">OpenStreetMaps (Basislayer)</label>
+			</div>
+			<br>
+			<div>
+				<input type="radio" name="baseLayerRadioButton" value="ÖPNV"><label for="ÖPNV">ÖPNV Layer</label>
+			</div>
+			<br>	
+			<div>
+				<input type="radio" name="baseLayerRadioButton" value="OpenStreetMapsBW"> <label for="OpenStreetMaps">OpenStreetMaps (sw)</label>
+			</div>	
+			<br>
+			<div>
+				<input type="radio" name="baseLayerRadioButton" value="Nachtmodus"><label for="ÖPNV">Nachtmodus Karte</label>
+			</div>
+			</b1>
+			</div>
+
+
+
+			<!-- POI-Manager -->
+			  <div id="routen" class="subsidebar">
+			  <h1>POI-Manager</h1>
+				<b1>
+					Hier können Sie neue Sehenswürdigkeiten (POIs) hinzufügen (in lila). 
+					Die blau markierten POIs sind sogenannte "Standard-POIs" und können nicht geändert werden. 
+					<br> <br>
+					Um einen neuen Punkt hinzuzufügen, klicken Sie auf die Schaltfläche "POI erstellen". 
+					Um einen Punkt zu löschen, klicken Sie auf die Schaltfläche "POI löschen". 
+					Die Schaltfläche "Auswahl beenden" setzt die Auswahl zurück.
+					<br>
+					<br>
+					Für weitere Informationen zu einem bestimmten POI klicken Sie auf den blauen oder lilanen Punkt auf der Karte.
+				</b1>
+			  <h2>Point-of-Interest Einfügen</h2>
+			  <b1>
+				<label for="stopPoi">
+					<input type="radio" id="stopPoi" name="selection" checked>
+					Auswahl beenden
+				</label>
+				<br>
+				<label for="poiDraw">
+					<input type="radio" id="poiDraw" name="selection">
+					POI erstellen
+				</label>
+				<br>
+				<label for="poiDelete">
+					<input type="radio" id="poiDelete" name="selection">
+					POI löschen
+				</label>
+				<br>
+				<br>
+				<form method ="post" action="/createPOI">
+				<label><b>Neuen Point-of-Interest hinzufügen:</b> </label><br>
+				<input type="text" id = "POIname" name = "POIname" placeholder="Bezeichnung" required><br>
+				<input type="number" id = "stationNr" name = "stationNr" placeholder="StationsNr." required><br>
+				<input type="text" id = "poiLong" name = "poiLong" placeholder="Longitude" required><br>
+				<input type="text" id = "poiLat" name = "poiLat" placeholder="Latitude" required><br>
+				<input type="text" id = "addedBy" name = "addedBy" placeholder="Hinzugefügt von..." required><br>
+				<button type="submit" id="createPOI" name="createPOI">Speichern</button>
+				</form>
+			</b1>
+			<h2>Rundgangplakate</h2>
+			<b1>
+			Die so genannten Standard-POIS sind (haupsächlich) Plakatstationen aus den Wandsbeker und Eilbeker Rundgängen. 
+			An den einzelnen Stationen finden Sie Plakate, die die Geschichte des Ortes erzählen. Die Plakate sehen in der Regel so aus:
+			<br>
+			<img src='/Plakatbilder/plakat_beispiel.jpg' alt ="Wandsbeker Rundgang" width = auto, height = "250" class = "center">
+			<br> 
+			Laut den Mühlenbek Verlag gibt es über 36 Plakate bzw. historische Orte... Aber auch nach vielen Suchen kann ich nicht alle finden. 
+			Vielliecht finden Sie noch welche?
+			
+
+		</b1>
+			</div>
+			
+			
+			
+			<!-- Routen verwalten -->
+			<div id="routen2" class="subsidebar">
+			<h1>Routenmanager</h1>
+			<b1>
+				Hier können Sie einen Rundgang hinzufügen, ändern oder löschen. 
+				Doppelklicken Sie auf den letzten Punkt, um den Rundgang zu fixieren.
+
+				<br> <br>
+				Die Schaltfläche "Auswahl beenden" setzt die Auswahl zurück.
+			</b1>
+
+
+
+		<h2>Route Einfügen</h2>
+			<b1>
+			<div>
+			<label for="stopRoute">
+				<input type="radio" id="stopRoute" name="selection_route" checked>
+				Auswahl beenden
+			</label><br><br>
+
+
+
+			<b>Rundgangoptionen: </b><br>
+
+			<label for="rundgangDraw">
+				<input type="radio" id="rundgangDraw" name="selection_route">
+				Rundgang erstellen
+			</label><br>
+
+			<label for="rundgangModify">
+				<input type="radio" id="rundgangModify" name="selection_route">
+				Rundgang ändern
+				<br>
+
+				<label for="rundgangDelete">
+					<input type="radio" id="rundgangDelete" name="selection_route">
+					Rundgang löschen
+				</label>
+				<br> <br>
+				<form method ="post" action="/createRundgang">
+					<label><b>Neuen Rundgang einfügen:</b> </label><br>
+					  <input type="text" id = "rundgang_name" name = "rundgang_name" placeholder="Bezeichnung"><br>
+					  <input type="text" id = "stadtteil" name = "stadtteil" placeholder="Stadtteil"><br>
+					  <input type="text" id = "poly_geom" name = "poly_geom" placeholder="Koordinaten"><br>
+					  <input type="text" id = "added_by" name = "added_by" placeholder="Hinzugefügt von..."><br>
+					<button type="submit" id="createRundgang" name="createRundgang" >Speichern</button>
+				</form>
+		</div>
+	</b1>
+	<div id="routen3" class="subsidebar">
+		<h1>Streckenmanager</h1>
+		<b1>
+			Hier können Sie eine Strecke hinzufügen, ändern oder löschen.
+			Doppelklicken Sie auf den letzten Punkt, um die Strecke zu fixieren.
+
+			<br> <br>
+			Die Schaltfläche "Auswahl beenden" setzt die Auswahl zurück.
+		</b1>
+		<div>
+
+			<h2>Strecke Einfügen</h2>
+			<b1>
+				<label for="stopStrecken">
+					<input type="radio" id="stopStrecken" name="selection_strecken" checked>
+					Auswahl beenden
+				</label><br><br>
+			<b>Streckenoptionen:</b><br>
+			<label for="streckenDraw">
+				<input type="radio" id="streckenDraw" name="selection_strecken">
+				Strecke erstellen
+			</label><br>
+
+			<label for="streckenModify">
+				<input type="radio" id="streckenModify" name="selection_strecken">
+				Strecke ändern
+			</label><br>
+
+			<label for="streckenDelete">
+				<input type="radio" id="streckenDelete" name="selection_strecken">
+				Strecke löschen
+			</label><br><br>
+
+			<form method ="post" action="/createStrecke">
+				<label><b>Neue Strecke einfügen:</b> </label><br>
+				  <input type="text" id = "strecken_name" name = "strecken_name" placeholder="Bezeichnung"><br>
+				  <input type="text" id = "stadtteil" name = "stadtteil" placeholder="Stadtteil"><br>
+				  <input type="text" id = "geom" name = "geom" placeholder="Koordinaten"><br>
+				  <input type="text" id = "add_by" name = "add_by" placeholder="Hinzugefügt von..."><br>
+				<button type="submit" id="createStrecke" name="createStrecke">Speichern</button>
+				</form>
+			
+			  </b1>
+			</div>
+		</div>	
+			
+			 
+			  <!--Mehr Infos -->
+			  <div id="about" class="subsidebar">
+				<h1>Historische Rundgänge</h1>
+				<b1>
+					Hamburg ist eine Stadt mit viel Geschichte.
+					<br> 
+					<br>
+					Der Stadtteil von Wandsbek - und auch der benachbarte Stadtteil Eilbek - ist ein sehr geschichtsträchtiger Ort.
+					Die Parks, die Denkmäler, die Gebäude - all das hat hier eine Geschichte.
+					<br>
+					<br>
+				  Hier können Sie mehr über die historischen Rundgänge in Hamburg erfahren. 
+				  Hinweis: diese Links sind extern und stehen in keiner Weise mit dieser Webseite in Verbindung.
+				  <br>
+				</b1>
+
+				<h2>Weitere Infos</h2>
+				<b1>
+				  <a href="http://www.buergerverein-wandsbek.de/" title="Hier finden Sie mehr Infos zum Thema historische Rundgänge in Wandsbek und Eilbek">Bürgerverein Wandsbek</a> 
+				  <br>
+				  Der Bürgerverein Wandsbek bietet mehrere Links und Informationen zum Stadtteil Wandsbek an. Hier finden Sie auch Informationen über die historischen Rundgänge. 
+				  <br> 
+				  <br>
+				  <a href="https://www.wandsbek.de/" title="Hier finden Sie mehr Infos über den Stadtteil Wandsbek">Stadtteil Wandsbek - Hauptseite</a> 
+				  <br> 
+				  Hier finden Sie weitere Informationen über den Stadtteil Wandsbek. 
+				  <br>
+				  <br>
+				  <a href="http://www.muehlenbek-verlag.de/Rundgang/Rundgang_Start.htm" title="Hier finden Sie mehr Infos zum Thema historische Rundgänge in Wandsbek und Eilbek">Mühlenbek Verlag</a>
+				  <br>
+				  Der Mühlenbek Verlag bietet ausführliche historische Fakten und Infos zu den einzelnen Plakate bzw. Stopps der Rundgang Wandsbek und Eilbek. Die Webseite wurde seit 2011 nicht mehr aktualisiert.    
+				  <br>
+				  <br>
+				  <a href="https://stadtparkverein.de/" title="Hier finden Sie mehr Infos zum Thema historische Stadtpark-Rundgänge">Stadtpark Verein Hamburg e.V.</a> 
+				  <br>
+				  Der Stadtparkverein bietet mehrere historische Stadtparkgruppenführungen an.
+				</b1>
+
+				<h1></h1>
+				<b1>
+				<img src='/Plakatbilder/Wandsbeker_HR/WR_klein.jpg' alt ="Geschichtsstein Wandsbek" width = auto, height = "250" class = "center">
+			</b1>
+			</div>
+			
+			
+				
+			<!-- About -->
+			<div id ="About" class ="subsidebar">
+			<h1>Über diese Webseite</h1>
+			<b1>
+
+				Diese Webseite ist eine interaktive WebGIS-Applikation zum Thema "Historische Routen und Sehenswürdigkeiten" in Wandsbek, Hamburg, Deutschland.
+				<br> <br>
+				<img src='/Plakatbilder/Unsortiert/Karte.jpg' alt ="Wandsbeker Rundgang" width = auto, height = "170" class = "center">
+			</b1>
+		
+			</div>
+			
+			<!-- Error Report -->
+			</div>
+			<div id="bug" class="subsidebar">
+			  <h1>Probleme Melden</h1>
+			  <b1>
+			  Falls Sie einen Problem haben oder einen Problem aufgetreten ist, bitten melden Sie diese. Sie können
+			  <a href="mailto:RundgangProbleme@gmail.com"><b>hier</b></a> ihre Probleme melden.
+			</b1>
+			</div>
+			
+		</aside>
+		<section>
+			<div id="map" class="map"></div>
+
+			<div  id="popup" class="ol-popup">
+				<a href="#" id="popup-closer" class="ol-popup-closer"></a>
+				<div id="popup-content"></div>
+			</div>
+		</section>
+	</body>
+
+	<script src="/lib/jquery.min.js" type="text/javascript"></script>
+    <script src="/lib/ol.js" type="text/javascript"></script>
+
+
+	<script src="/layers.js" type="text/javascript"></script>
+	<!--<script src="/lib/ol-layerswitcher.js"></script>-->
+
+	<script src="/index.js" type="text/javascript"></script>
+
+	<script src="/client.js" type="text/javascript"></script>
+	<script src="/sidebar.js" type="text/javascript"></script>
+
+</html>

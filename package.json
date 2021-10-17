@@ -1,0 +1,28 @@
+{
+  "name": "WandsbekerRundgang",
+  "version": "1.0.0",
+  "description": "Historischer Rundgang Hamburg",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "startDev": "nodemon server.js"
+  },
+  "author": "Kayla Barginda",
+  "license": "ISC",
+  "dependencies": {
+    "@ngageoint/geopackage": "^2.1.4",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "ol": "^6.4.3",
+    "ol-ext": "^3.1.15",
+    "ol-layerswitcher": "^3.7.0",
+    "pg": "^8.3.3",
+    "uuid": "^8.3.0",
+    "uuidv4": "^6.2.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}

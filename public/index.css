@@ -1,0 +1,120 @@
+body {
+	font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background-color: rgb(41, 44, 51);
+}
+aside { 
+	grid-area: info; 
+}
+.map {
+	height: 100vh;
+	width: 100%;
+}
+.subsidebar {
+	height: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	background-color:rgb(41, 44, 51);;
+	overflow-x: hidden;
+	transition: 0.5s;
+	padding-top: 0;
+	margin-left: 50px;
+	color: #bebdbd;
+  }
+  
+  /*heading */ 
+  .subsidebar h1 {
+	font-size: 1.2em;
+	border-bottom: 1px solid #bebdbd;
+	margin-right: 20px;
+  }
+  
+  /*subheading */
+  .subsidebar h2 {
+	font-size: 1em;
+	border-bottom: 1px solid #bebdbd;
+	margin-right: 20px;
+  }
+  /* sub-sidebar */ 
+  .subsidebar b1 {
+	font-size: 0.8em;
+	margin-right: 20px;
+  }
+  
+  /* Sidebar */
+  .sidebar {
+	height: 100%;
+	width: 50px;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	background-color: rgb(41, 44, 51);
+	overflow-x: hidden;
+	transition: 0.5s; 
+	padding-top: 16px;
+  }
+  
+  .sidebar a {
+	padding: 6px 8px 6px 16px;
+	text-decoration: none;
+	font-size: 16px;
+	color: #bebdbd;
+	display: block;
+	transition: 0.3s;
+  }
+  
+  .sidebar a:hover {
+	color: #fffbfb;
+  }
+  
+  .main {
+	transition: margin-left 0.5s; 
+	margin-left: 50px; /* Same as the width of the sidenav */
+	background-color: rgb(41, 44, 51);
+	padding: 0px 0px;
+  }
+  
+  @media screen and (max-height: 450px) {
+	.sidebar {padding-top: 15px;}
+	.sidebar a {font-size: 18px;}
+  }
+  
+  .subsidebar > ul > li {
+	list-style-type: none;
+	list-style-position: outside;
+	padding: 0;
+	margin-left: -20px;
+  }
+  
+  .info {
+	border-collapse: collapse;
+	margin-right: 20px;
+  }
+  
+  .info td {
+	border: 1px solid #BFC9CA;
+	padding: 5px 10px 5px 10px; /* top, right, bottom, left */
+  }
+  
+  /*Linkfarbe */ 
+  a:link {
+	color: rgb(214, 207, 207);
+	background-color: transparent;
+	text-decoration: none;
+  }
+  
+  a:visited{
+	color: rgb(136, 188, 190);
+	background-color: transparent;
+	text-decoration: none;
+  }
+  
+  a:hover{
+	color: rgb(255, 255, 255);
+	background-color: transparent;
+	text-decoration: none;
+  }
