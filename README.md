@@ -25,14 +25,20 @@ Startseite der WebGIS Applikation. Hier sind die Standard-POIs (blau), selbstdef
 
 Wenn auf einen Punkt, Rundgang oder Strecke geklickt wird, werden die folgende Popups angezeigt:
 
-<img width="238" alt="Bildschirmfoto 2021-10-17 um 19 54 17" src="https://user-images.githubusercontent.com/22305662/137639130-97aa39c2-9675-4820-a987-bed5c8add181.png">
+<img width="416" alt="Bildschirmfoto 2021-10-17 um 19 53 41" src="https://user-images.githubusercontent.com/22305662/137639052-42ba0f43-1fb2-4b07-b1a7-5a558fcb86a0.png">
 
-Rundgänge sind nicht gleich Strecken! Rundgänge werden als Polygon gespeichert, Strecken als Linestring! Strecken und Rundgänge können gespeichert, geändert oder gelöscht werden (siehe Bild, unten).
+Rundgänge sind nicht gleich Strecken! Rundgänge werden als Polygon gespeichert, Strecken als Linestring!
 
 <img width="482" alt="Bildschirmfoto 2021-10-17 um 19 57 18" src="https://user-images.githubusercontent.com/22305662/137639178-2fea3b9f-e813-4ead-9b7c-cd7aae7e71b6.png">
 
-### POIS, Strecken und Rundgänge hinzufügen
-<img width="416" alt="Bildschirmfoto 2021-10-17 um 19 53 41" src="https://user-images.githubusercontent.com/22305662/137639052-42ba0f43-1fb2-4b07-b1a7-5a558fcb86a0.png">
+### POIs, Strecken und Rundgänge hinzufügen
+POIs, Strecken und Rundgänge können gespeichert, geändert oder gelöscht werden. 
+
+**POIs verwalten:**
+<img width="238" alt="Bildschirmfoto 2021-10-17 um 19 54 17" src="https://user-images.githubusercontent.com/22305662/137639130-97aa39c2-9675-4820-a987-bed5c8add181.png">
+
+**Rundgänge/Strecken verwalten:**
+<img width="464" alt="Bildschirmfoto 2021-10-17 um 19 54 35" src="https://user-images.githubusercontent.com/22305662/137639508-fa768165-69e8-4309-9a94-40655743261a.png">
 
 ## Datenbankaufbau
 
